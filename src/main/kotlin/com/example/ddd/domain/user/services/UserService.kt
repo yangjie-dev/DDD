@@ -8,4 +8,5 @@ interface UserService {
     fun createUser(user: User): User
     fun getUsers(): List<User>
     fun deleteById(id: UUID)
+    fun existsById(id: UUID): Any
 }

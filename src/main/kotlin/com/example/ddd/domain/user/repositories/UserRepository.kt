@@ -8,5 +8,5 @@ interface UserRepository {
     fun findAll(): List<User>
     fun findById(id: UUID): User?
     fun deleteById(id: UUID)
-
+    fun existsById(id:UUID)
 }

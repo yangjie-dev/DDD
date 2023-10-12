@@ -17,22 +17,26 @@ class UserRepositoryImpl(private var userJpaRepository: UserJpaRepository) : Use
 
     override fun save(user: User): User {
         val userEntity = user.toEntity()
-        val savedUser =  userJpaRepository.save(userEntity)
+        val savedUser = userJpaRepository.save(userEntity)
         return savedUser.toDomain()
     }
 
     override fun findAll(): List<User> {
-        val users =  userJpaRepository.findAll()
-        return users.map { user ->user.toDomain() }
+        val users = userJpaRepository.findAll()
+        return users.map { user -> user.toDomain() }
     }
 
 
     override fun findById(id: UUID): User? {
-        val userEntity =  userJpaRepository.findById(id).getOrNull()
+        val userEntity = userJpaRepository.findById(id).getOrNull()
         return userEntity?.toDomain()
     }
 
     override fun deleteById(id: UUID) {
         userJpaRepository.deleteById(id)
+    }
+
+    override fun existsById(id: UUID) {
+        userJpaRepository.existsById(id)
     }
 }
